@@ -1,0 +1,21 @@
+{
+  "name": "wyle-cli",
+  "version": "1.0.0",
+  "description": "🚀 Wyle CLI 现代化前端项目脚手架工具",
+  "bin": {
+    "wyle-gen": "./bin/index.js",
+    "w-g": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Wyle timing <wyle-timing@outlook.com >",
+  "license": "ISC",
+  "dependencies": {
+    "@darkobits/lolcatjs": "^3.1.3",
+    "chalk": "^4.1.0",
+    "commander": "^14.0.1",
+    "yargs-parser": "^15.0.0"
+  }
+}
