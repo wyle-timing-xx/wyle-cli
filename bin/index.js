@@ -1,26 +1,51 @@
 #!/usr/bin/env node
 
+// 这个 shebang 告诉系统使用 node 来执行这个文件
+
 const { program } = require('commander');
 const chalk = require('chalk');
+const lolcatjs = require('@darkobits/lolcatjs');
 const pkg = require('../package.json');
-const { welcomeFn } = require('./welcome');
-const {pkgDefaultName} = require('./constance')
-welcomeFn()
+const WyleCLI = require('../lib/Cli');
+
+// 创建 CLI 实例
+const cli = new WyleCLI();
+
+cli.welcomeFn()
 program
-  .name(pkg.name || pkgDefaultName)
+  .name('wyle-gen')
   .description(pkg.description)
   .version(pkg.version, '-v, --version', '显示版本号');
 
-
-// 创建项目的主命令（暂时是占位符）
+// 显示可用模板
 program
-  .command('create <project-name>')
-  .description('创建一个新的前端项目')
-  .option('-t, --template <template>', '选择项目模板', 'vue')
-  .action((projectName, options) => {
-    console.log(chalk.blue(`🎯 准备创建项目: ${projectName}`));
-    console.log(chalk.gray(`📋 使用模板: ${options.template}`));
-    console.log(chalk.yellow('🚧 功能开发中...'));
+  .command('list')
+  .alias('ls')
+  .description('显示所有可用的项目模板')
+  .action(() => {
+    cli.showAvailableTemplates();
+  });
+
+
+// 显示 CLI 详细信息
+program
+  .command('version')
+  .alias('ver')
+  .description('显示详细的版本信息')
+  .action(() => {
+    console.log(chalk.cyan.bold(`🚀 Wyle CLI 详细信息`));
+    console.log(chalk.gray(`版本: v${pkg.version}`));
+    console.log(chalk.gray(`作者: ${pkg.author}`));
+    console.log(chalk.gray(`描述: ${pkg.description}`));
+    console.log(chalk.gray(`许可证: ${pkg.license}`));
+    console.log(chalk.gray(`Node.js 版本: ${process.version}`));
+    console.log(chalk.gray(`平台: ${process.platform} ${process.arch}`));
+    
+    // 显示依赖版本
+    console.log(chalk.cyan('\n📦 主要依赖:'));
+    Object.entries(pkg.dependencies).forEach(([name, version]) => {
+      console.log(chalk.gray(`  ${name}: ${version}`));
+    });
   });
 
 // 解析命令行参数
