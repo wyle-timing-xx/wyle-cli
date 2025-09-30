@@ -1,0 +1,50 @@
+{
+	// TypeScript 配置
+	"typescript.preferences.includePackageJsonAutoImports": "on",
+	"typescript.suggest.autoImports": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"typescript.inlayHints.parameterNames.enabled": "all",
+	"typescript.inlayHints.variableTypes.enabled": true,
+
+	// 此处是动态生成 css module 的关键代码之一
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	// CSS 相关配置
+	"css.validate": true,
+	"scss.validate": true,
+	"css.lint.unknownAtRules": "ignore",
+
+	// 文件关联
+	"files.associations": {
+		"*.module.css": "css",
+		"*.module.scss": "scss"
+	},
+
+	// 自动补全配置
+	"emmet.includeLanguages": {
+		"typescript": "html",
+		"typescriptreact": "html"
+	},
+
+	// 格式化配置
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.organizeImports": "explicit"
+	},
+
+	// 搜索排除
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/dist": true,
+		"**/build": true,
+		"**/*.min.js": true,
+		"**/*.min.css": true
+	},
+
+	// 文件浏览器配置
+	"files.exclude": {
+		"**/node_modules": true,
+		"**/build": true
+	}
+}

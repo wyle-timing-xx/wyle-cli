@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="<%= description %>">
+  <title><%= title %></title>
+  
+  <!-- 开发环境标识 -->
+  <meta name="environment" content="development">
+  
+  <!-- 开发环境调试工具 -->
+  <style>
+    /* 开发环境调试样式 */
+    body::before {
+      content: "🚧 Development Mode";
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: #ff6b6b;
+      color: white;
+      padding: 4px 8px;
+      font-size: 12px;
+      z-index: 9999;
+      border-radius: 0 0 0 4px;
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    <strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  
+  <div id="root"></div>
+  
+  <!-- 开发环境提示 -->
+  <% if (devMode) { %>
+  <script>
+    console.log('🚀 Running in development mode');
+    console.log('Environment:', '<%= NODE_ENV %>');
+    
+    // 开发环境性能监控
+    if (typeof performance !== 'undefined') {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const perfData = performance.getEntriesByType('navigation')[0];
+          console.log('🔍 Load time:', perfData.loadEventEnd - perfData.loadEventStart + 'ms');
+        }, 0);
+      });
+    }
+  </script>
+  <% } %>
+</body>
+</html>

@@ -26,6 +26,16 @@ program
     cli.showAvailableTemplates();
   });
 
+// 创建新项目
+program
+  .command('create <project-name>')
+  .alias('c')
+  .description('创建新项目')
+  .option('-t, --template <template>', '指定要使用的模板')
+  .action(async (projectName, options) => {
+    await cli.createProject(projectName, options.template);
+  });
+
 
 // 显示 CLI 详细信息
 program

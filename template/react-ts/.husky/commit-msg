@@ -1,0 +1,10 @@
+#!/bin/sh
+. ".husky/_/husky.sh"
+
+npx --yes commitlint --edit mkdir -p .husky && printf "#!/bin/sh
+. \"$(dirname "$0")/_/husky.sh\"
+
+npx --yes commitlint --edit $1
+" > .husky/commit-msg && chmod +x .husky/commit-msg && mkdir -p .husky/_ && printf "#!/bin/sh
+exit 0
+" > .husky/_/husky.sh && chmod +x .husky/_/husky.sh
