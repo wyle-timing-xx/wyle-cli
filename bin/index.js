@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-// 这个 shebang 告诉系统使用 node 来执行这个文件
-
 const { program } = require('commander');
 const chalk = require('chalk');
 const lolcatjs = require('@darkobits/lolcatjs');
